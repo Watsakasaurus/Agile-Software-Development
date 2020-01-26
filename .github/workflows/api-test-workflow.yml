@@ -1,0 +1,51 @@
+name: Build and Test
+
+on:
+  push:
+    paths:
+      - 'api/*' # This workflow must only be triggered for api files
+
+jobs:
+  checks:
+    name: Sanity Checks
+    runs-on: ubuntu-latest # Run on latest Ubuntu
+    services:
+      postgres:
+        image: postgres:11.5
+        env:
+          POSTGRES_USER: cms
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: cms
+        ports:
+        # will assign a random free host port
+        - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Setup up Go 1.13
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.13
+
+      - name: Check out source
+        uses: actions/checkout@v1 # Checkout the code
+        
+      - name: Build
+        env:
+          GO111MODULES: "on"
+        run: make build
+        working-directory: ./api
+
+      - name: Lint the code
+        run: make go-inspect
+        working-directory: ./api
+        
+      - name: Setup test db and run unit tests
+        run: |
+          make migrate
+          make go-test
+        working-directory: ./api
+        env: 
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
