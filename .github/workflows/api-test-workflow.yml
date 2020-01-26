@@ -1,21 +1,22 @@
 name: Build and Test
-
 on:
-  push:
-    paths:
-      - 'api/*' # This workflow must only be triggered for api files
+  pull_request:
+    branches: master
+    paths: 
+      - 'api/**'
 
 jobs:
-  checks:
-    name: Sanity Checks
+  build:
+    name: Build, Lint and Test
     runs-on: ubuntu-latest # Run on latest Ubuntu
+    
     services:
       postgres:
         image: postgres:11.5
         env:
-          POSTGRES_USER: cms
-          POSTGRES_PASSWORD: secret
-          POSTGRES_DB: cms
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test_cms
         ports:
         # will assign a random free host port
         - 5432/tcp
@@ -23,29 +24,35 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+      - name: Check out source
+        uses: actions/checkout@v1 # Checkout the code
+      
       - name: Setup up Go 1.13
         uses: actions/setup-go@v1
         with:
-          go-version: 1.13
+          go-version:  '1.13'        
+      
+      - name: Set GOPATH
+        # temporary fix
+        # see https://github.com/actions/setup-go/issues/14
+        run: |
+          echo "##[set-env name=GOPATH;]$(dirname $GITHUB_WORKSPACE)"
+          echo "##[add-path]$(dirname $GITHUB_WORKSPACE)/bin"
+        shell: bash
 
-      - name: Check out source
-        uses: actions/checkout@v1 # Checkout the code
-        
       - name: Build
         env:
           GO111MODULES: "on"
-        run: make build
+        run: make go-build
         working-directory: ./api
 
-      - name: Lint the code
+      - name: Run linter
         run: make go-inspect
         working-directory: ./api
         
-      - name: Setup test db and run unit tests
-        run: |
-          make migrate
-          make go-test
+      - name: Run unit tests
+        run: make go-test
         working-directory: ./api
-        env: 
+        env:
           POSTGRES_HOST: localhost
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
