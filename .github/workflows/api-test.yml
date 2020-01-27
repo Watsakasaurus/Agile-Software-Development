@@ -1,9 +1,5 @@
 name: Build and Test
-on:
-  pull_request:
-    branches: master
-    paths: 
-      - 'api/**'
+on: [push]
 
 jobs:
   build:
