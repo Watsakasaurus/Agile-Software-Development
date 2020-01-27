@@ -9,12 +9,22 @@ The project utilises the following technologies.
 	* CSS
 	* JavaSctipt / JQuery
 * Backend:
-	* Go
+	* Go 1.13
 * Database:
-	* SQL
+	* PostgreSQL 11.5+
 
 ## TODO:
 Currently tracked via trello.
 
 ## DONE
 Currently tracked via trello.
+
+
+## PostgreSQL setup for local dev env:
+For dev environment user `cms` with password `secret` is required  
+For unit testing user `test` with password `test` is required  
+Once the users are setup, create databases `cms` and `test_cms`  
+In order to migrate to latest version of DB schema, run:
+```
+go run main.go -migrate
+```  
