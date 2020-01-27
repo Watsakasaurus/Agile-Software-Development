@@ -1,0 +1,11 @@
+table.dataTable tbody tr.selected, table.dataTable tbody th.selected, table.dataTable tbody td.selected {
+    color: #212529 !important;
+}
+
+.full-span-col {
+   column-span: all; 
+}
+
+div.dataTables_scrollBody {
+    height: 100%;
+}
