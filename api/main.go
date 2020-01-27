@@ -5,7 +5,6 @@ import (
 	"flag"
 	"os"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/kelseyhightower/envconfig"
 	log "github.com/sirupsen/logrus"
 
@@ -17,6 +16,7 @@ import (
 // Config represents server configuration
 type Config struct {
 	Postgres db.Config
+	Env      string `envconfig:"ENV" default:"dev"`
 }
 
 func main() {
@@ -26,7 +26,6 @@ func main() {
 	flag.Parse()
 
 	log.SetLevel(log.InfoLevel)
-	log.SetFormatter(&log.TextFormatter{})
 
 	setupConf(&conf)
 
@@ -51,7 +50,6 @@ func migrateDB(dbConf db.Config) {
 	log.Info("Migrating Database Schema")
 	dbc, err := db.Connect(dbConf)
 	if err != nil {
-		spew.Dump(err)
 		log.Fatalf("failed to connect to talaria db: %s", err)
 	}
 
@@ -69,13 +67,15 @@ func setupConf(conf *Config) {
 		log.Fatalf("Failed to load server config from env: %s", err)
 	}
 
-	// Get secret from AWS
-	secret := utils.GetSecret()
-	// If secret was successfully populated, unmarshal it into config
-	if len(secret) > 0 {
-		err := json.Unmarshal(secret, &conf.Postgres)
-		if err != nil {
-			log.Fatalf("Failed to unmarshal secret into conf: %s", err)
+	if conf.Env == "prod" {
+		// Get secret from AWS
+		secret := utils.GetSecret()
+		// If secret was successfully populated, unmarshal it into config
+		if len(secret) > 0 {
+			err := json.Unmarshal(secret, &conf.Postgres)
+			if err != nil {
+				log.Fatalf("Failed to unmarshal secret into conf: %s", err)
+			}
 		}
 	}
 }
