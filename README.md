@@ -23,7 +23,15 @@ Currently tracked via trello.
 ## PostgreSQL setup for local dev env:
 For dev environment user `cms` with password `secret` is required  
 For unit testing user `test` with password `test` is required  
-Once the users are setup, create databases `cms` and `test_cms`  
+
+Once the users are setup, create databases `cms` and `test_cms`
+
+Required extensions:
+```
+CREATE EXTENSION cube;
+CREATE EXTENSION earthdistance;
+```
+
 In order to migrate to latest version of DB schema, run:
 ```
 go run main.go -migrate
