@@ -30,7 +30,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 			pr.total_discharges, z.latitude, z.longitude,
 			round(
 				point(z.longitude, z.latitude)<@>point(?,?)
-			) as distance
+			) * 1609.344 as distance
 		from procedures pr
 		join provider_procedures pp on pp.procedure_id=pr.id
 		join providers p on p.id=pp.provider_id
