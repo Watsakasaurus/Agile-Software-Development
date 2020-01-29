@@ -63,7 +63,10 @@ func TestMain(m *testing.M) {
 
 func wipeDB() {
 	dbx.MustExec(`
-	DROP TABLE IF EXISTS inpatient_charge_data;
+	DROP TABLE IF EXISTS provider_procedures;
+	DROP TABLE IF EXISTS providers;
+	DROP TABLE IF EXISTS procedures;
+	DROP TABLE IF EXISTS zip_code_lat_long;
 
 	DROP TABLE IF EXISTS schema_migrations;
 	`)
@@ -72,7 +75,10 @@ func wipeDB() {
 
 func cleanup() {
 	dbx.MustExec(`
-	DELETE FROM inpatient_charge_data;
+	DELETE FROM provider_procedures;
+	DELETE FROM providers;
+	DELETE FROM procedures;
+	DELETE FROM zip_code_lat_long;
 	`)
 
 	// reset logging level, in case it was set in a sub-test
