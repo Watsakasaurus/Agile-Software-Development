@@ -96,7 +96,9 @@ func CreateSwaggerAPI() *swagger.API {
 		swag.Version("2.0"),
 		swag.BasePath("/medicare/api"),
 		swag.Endpoints(
-			aggregateEndpoints()...,
+			aggregateEndpoints(
+				medicareAPI(),
+			)...,
 		),
 	)
 	return api
