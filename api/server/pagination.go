@@ -29,7 +29,7 @@ func Pagination() echo.MiddlewareFunc {
 					}
 					perPage = int(n)
 				} else {
-					perPage = 10
+					perPage = 20
 				}
 
 				str = c.QueryParam("page")

@@ -34,7 +34,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 		join provider_procedures pp on pp.procedure_id=pr.id
 		join providers p on p.id=pp.provider_id
 		join zip_code_lat_long z on z.zip_code=p.zip_code
-		order by distance) as res where res.distance<?	
+		order by distance) as res where res.distance<=?	
 	`
 
 	args := []interface{}{*filter.Latitude, *filter.Longitude, *filter.Proximity}
@@ -80,7 +80,7 @@ func (c *Client) GetMedicalDataByDescription(filter MedicalDataFilter, perPage, 
 		InnerJoin("provider_procedures pp", "pp.procedure_id=pr.id").
 		InnerJoin("providers p", "p.id=pp.provider_id").
 		InnerJoin("zip_code_lat_long zcll", "zcll.zip_code=p.zip_code").
-		OrderBy("average_total_payments ASC")
+		OrderBy("pp.average_total_payments ASC, p.name ASC")
 
 	// nolint: unparam
 	query = applyMedicalDataFilter(query, filter)
@@ -99,10 +99,6 @@ func (c *Client) GetMedicalDataByDescription(filter MedicalDataFilter, perPage, 
 func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
 	log.Debugf("GetFilteringData")
 
-	/**
-	select to_json(array(select distinct pr.drg_definition from provider_procedures pp join procedures pr on pr.id=pp.procedure_id)) as drg_definitions
-	max(pp.average_total_payments) as max_price, min(pp.average_total_payments) as min_price from provider_procedures pp;
-	**/
 	query := c.Builder().
 		Select(`to_json(array(select distinct pr.drg_definition from provider_procedures pp join procedures pr on pr.id=pp.procedure_id))
 		as drg_definitions, max(pp.average_total_payments) as price_max, min(pp.average_total_payments) as price_min`).
@@ -115,6 +111,119 @@ func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
 	}
 
 	return &results, nil
+}
+
+// CreateProvider creates provider
+func (c *Client) CreateProvider(payload types.Provider) *types.Error {
+	log.Debugf("CreateProvider")
+
+	query := `INSERT INTO providers 
+		(id, name, street, city, state, zip_code, hrr_description)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)`
+
+	_, err := c.ex.Exec(query, payload.ID, payload.Name,
+		payload.Street, payload.City, payload.State, payload.ZipCode,
+		payload.HRRDescription)
+
+	return c.transformError(err)
+}
+
+// func (c *Client) CreateProvider(payload types.Provider) (*types.Provider, *types.Error) {
+// 	log.Debugf("CreateProvider")
+
+// 	query := c.Builder().
+// 		Insert(builder.Eq{
+// 			"id":              payload.ID,
+// 			"name":            payload.Name,
+// 			"street":          payload.Street,
+// 			"city":            payload.City,
+// 			"state":           payload.State,
+// 			"zip_code":        payload.ZipCode,
+// 			"hrr_description": payload.HRRDescription,
+// 		}).Into("providers")
+
+// 	_, err := c.Exec(query)
+// 	if err != nil {
+// 		return nil, c.transformError(err)
+// 	}
+
+// 	return &payload, nil
+// }
+
+func (c *Client) GetProviderByID(id int) (*types.Provider, *types.Error) {
+	log.Debugf("GetProviderByID")
+
+	query := c.Builder().Select("*").
+		From("providers").
+		Where(builder.Eq{"id": id})
+
+	var provider types.Provider
+	err := c.Get(&provider, query)
+	if err != nil {
+		return nil, c.transformError(err)
+	}
+
+	return &provider, nil
+}
+
+// CreateProcedure inserts procedure into db
+func (c *Client) CreateProcedure(payload types.Procedure) *types.Error {
+	log.Debugf("CreateProcedure")
+
+	// Insert procedure data
+	query := `INSERT INTO procedures
+		(total_discharges, drg_definition)
+		VALUES ($1, $2)`
+
+	_, err := c.ex.Exec(query, payload.TotalDischarges, payload.DRGDefinition)
+
+	return c.transformError(err)
+}
+
+func (c *Client) GetProcedureByID(id string) (*types.Procedure, *types.Error) {
+	log.Debugf("GetProcedureByID")
+
+	query := c.Builder().Select("*").
+		From("procedures").
+		Where(builder.Eq{"id": id})
+
+	var procedure types.Procedure
+	err := c.Get(&procedure, query)
+	if err != nil {
+		return nil, c.transformError(err)
+	}
+
+	return &procedure, nil
+}
+
+// AssignProcedureToProvider creates a link between provider and procedure
+func (c *Client) AssignProcedureToProvider(payload types.ProvideRrocedure) *types.Error {
+	log.Debugf("AssignProcedureToProvider")
+
+	query := `INSERT INTO provider_procedures (provider_id, procedure_id, average_total_payments) 
+		VALUES($1, $2, $3)`
+
+	_, err := c.ex.Exec(query, payload.ProviderID, payload.ProcedureID, payload.AverageTotalPayments)
+
+	return c.transformError(err)
+}
+
+// CreateZipCodeLatLong assigns latitude and longitude to a zip code
+func (c *Client) CreateZipCodeLatLong(payload types.ZipCodeLatLong) (*types.ZipCodeLatLong, *types.Error) {
+	log.Debugf("CreateZipCodeLatLong")
+
+	query := c.Builder().Insert(builder.Eq{
+		"zip_code":  payload.ZipCode,
+		"latitude":  payload.Latitude,
+		"longitude": payload.Longitude,
+	}).Into("zip_code_lat_long")
+
+	_, err := c.Exec(query)
+	if err != nil {
+		return nil, c.transformError(err)
+	}
+
+	return &payload, nil
 }
 
 // apply filters to customer query, if required

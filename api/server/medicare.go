@@ -26,7 +26,7 @@ func medicareAPI() []*swagger.Endpoint {
 			},
 			"min_price": {
 				Type:        "integer",
-				Minimum:     &[]int64{1}[0],
+				Minimum:     &[]int64{0}[0],
 				Description: "Minimum price to search by",
 			},
 			"max_price": {
