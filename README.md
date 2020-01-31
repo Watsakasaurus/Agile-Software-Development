@@ -2,6 +2,9 @@
 ## Assignment Description:
 Create an application that can help patients around the US to find the cheapest option for treatment. This application will be able to show the user these options in a list format and on a map. The user should be able to sort by price, location and a "best match".
 
+## Live version
+http://99.81.88.54/index.html
+
 ## Project Information:
 The project utilises the following technologies.
 * Frontend:
