@@ -85,5 +85,6 @@ All members present.
 All members present.
 
 ### Summary of Conversation:
+Summary of what is left to implement in sprint 1, mostly the final links between the map API and search results, talked about what won't get done and must be pushed to sprint 2, backlogged these changes properly. Planned out our meeting with the clients, organised our materials to show them. Finally talked about the last pieces of evidence we needed to submit for our sprint 1 review.
 
 ---
