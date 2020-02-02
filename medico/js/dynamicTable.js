@@ -1,7 +1,3 @@
-let url = "http://99.81.88.54:5009/medicare/api/data"
-let respData = {}
-
-
 // Disable searching on table
 $.extend(true, $.fn.dataTable.defaults, {
     "searching": false
@@ -9,33 +5,20 @@ $.extend(true, $.fn.dataTable.defaults, {
 
 // Init table on document load
 $(document).ready(function () {
-    $.ajax({
-        url: url,
-        data: {
-            lat: 42,
-            long: -71,
-            proximity: 200,
-            query: '247',
-            page: 1,
-            per_page: 2000,
-            max_price: 1000000,
-            min_price: 1000
-        },
-        type: "GET",
-        success: function (response) {
-            renderTable(response)
-        },
-        error: function (xhr, status, error) {
-            renderTable(data)
-        }
-    });
-});
 
-function renderTable(data) {
+    // Get data from browser.
+    let data = localStorage.getItem("data")
+
+    // Set data to mock if localstorage is empty
+    if (data == null) {
+        data = mockData
+    }
+
+    // Turn json string into object
+    data = JSON.parse(data)
 
     let columns = []
     if (data.total > 0) {
-
         columns.push(
             {
                 class_name: "full-span-col",
@@ -75,18 +58,17 @@ function renderTable(data) {
                 title: "Price",
             }
         )
-    }
 
-    // Check if distance is present
-    if ("distance" in data.objects[0]) {
-        columns.push(
-            {
-                data: "distance",
-                title: "Distance",
-            }
-        )
+        // Check if distance is present
+        if ("distance" in data.objects[0]) {
+            columns.push(
+                {
+                    data: "distance",
+                    title: "Distance",
+                }
+            )
+        }
     }
-
     $('#resultsTable').DataTable({
         "scrollY": "80vh",
         "scrollCollaps": true,
@@ -122,11 +104,11 @@ function renderTable(data) {
     });
 
     $('#resultsTable tbody').on('click', 'tr', function () {
-        let table = $('#resultsTable').DataTable();
-        let data = table.row(this).data();
+        // Create data from the table based on clicked element.
+        let clickData = $('#resultsTable').DataTable().row(this).data();
 
         // Center the map when user clicks an entry in the list
-        map.setCenter({ lat: data.latitude, lng: data.longitude });
+        map.setCenter({ lat: clickData.latitude, lng: clickData.longitude });
         map.setZoom(14);
     })
-}
+});
