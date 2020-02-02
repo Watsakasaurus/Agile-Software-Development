@@ -95,6 +95,25 @@ func (c *Client) GetMedicalDataByDescription(filter MedicalDataFilter, perPage, 
 	return results, total, nil
 }
 
+// GetProceduresForFiltering returns bare minimum information for filtering
+func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
+	log.Debugf("GetFilteringData")
+
+	query := c.Builder().
+		Select(`
+			to_json(array_agg(drg_definition)) as drg_definitions, MIN(CEIL(average_total_payments)) as price_min, 
+			MAX(FLOOR(average_total_payments)) as price_max`).
+		From("procedures")
+
+	var results types.FilteringData
+	err := c.Get(&results, query)
+	if err != nil && err != sql.ErrNoRows {
+		return nil, c.transformError(err)
+	}
+
+	return &results, nil
+}
+
 // apply filters to customer query, if required
 // nolint: unparam
 func applyMedicalDataFilter(query *builder.Builder, filter MedicalDataFilter) *builder.Builder {

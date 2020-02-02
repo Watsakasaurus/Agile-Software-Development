@@ -51,3 +51,15 @@ func GetMedicalData(c echo.Context) error {
 		PageNumber: pageNumber,
 	})
 }
+
+func GetFilteringData(c echo.Context) error {
+	log.Debugf("GetProceduresForFiltering")
+	dbc := c.Get("db").(*db.Client)
+
+	results, dbErr := dbc.GetFilteringData()
+	if dbErr != nil {
+		return dbErr
+	}
+
+	return c.JSON(http.StatusOK, results)
+}

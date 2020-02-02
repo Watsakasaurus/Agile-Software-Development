@@ -1,5 +1,10 @@
 package types
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // MedicalData represents medical data
 type MedicalData struct {
 	ProviderID              int     `db:"provider_id" json:"provider_id"`
@@ -26,4 +31,25 @@ type MedicareDataResponse struct {
 	Total      int           `json:"total"`
 	PageNumber int           `json:"page_number"`
 	PerPage    int           `json:"per_page"`
+}
+
+type DrgDefinitions []string
+
+// ProcedureForFiltering is minimal amount of data necessary to filter
+type FilteringData struct {
+	DrgDefinitions DrgDefinitions `db:"drg_definitions" json:"procedure_definitions"`
+	PriceMin       float64        `db:"price_min" json:"price_min"`
+	PriceMax       float64        `db:"price_max" json:"price_max"`
+}
+
+func (d *DrgDefinitions) Scan(value interface{}) error {
+	switch src := value.(type) {
+	case []byte:
+		return json.Unmarshal(src, d)
+	case nil:
+		*d = []string{}
+		return nil
+	default:
+		return fmt.Errorf("invalid type for Document: %T", src)
+	}
 }

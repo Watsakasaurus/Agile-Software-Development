@@ -54,8 +54,15 @@ func medicareAPI() []*swagger.Endpoint {
 		}),
 		endpoint.Tags("Medicare"),
 	)
+	getFilteringData := endpoint.New("GET", "/filtering", "Get data to perform filtering",
+		endpoint.Handler(controllers.GetFilteringData),
+		endpoint.Description("Returns data for filtering"),
+		endpoint.Response(http.StatusOK, types.FilteringData{}, "Success"),
+		endpoint.Tags("Medicare"),
+	)
 
 	return []*swagger.Endpoint{
 		getMedicalData,
+		getFilteringData,
 	}
 }
