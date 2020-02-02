@@ -13,8 +13,8 @@ function addDomMarker(lati, lon, price, name) {
     outerElement.style.cursor = 'default';
 
     // More Style
-    innerElement.style.color = 'white';
-    innerElement.style.backgroundColor = 'black';
+    innerElement.style.color = 'black';
+    innerElement.style.backgroundColor = 'white';
     innerElement.style.border = '2px solid black';
     innerElement.style.font = 'normal 12px arial';
     innerElement.style.lineHeight = '12px'
