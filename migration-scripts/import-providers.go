@@ -61,9 +61,9 @@ func main() {
 		State  string
 	}{}
 
-	sqlProcedures := "INSERT INTO procedures(total_discharges, average_total_payments, average_covered_charges, average_medicare_payments, drg_definition) VALUES($1, $2, $3, $4, $5)"
+	sqlProcedures := "INSERT INTO procedures(total_discharges, drg_definition) VALUES($1, $2)"
 	sqlProviders := "INSERT INTO providers(id, name, street, city, state, zip_code, hrr_description) VALUES($1, $2, $3, $4, $5, $6, $7)"
-	sqlProviderProcedure := "INSERT INTO provider_procedures(provider_id, procedure_id) VALUES($1, $2)"
+	sqlProviderProcedure := "INSERT INTO provider_procedures(provider_id, procedure_id, average_total_payments) VALUES($1, $2, $3)"
 
 	tx := db.MustBegin()
 
@@ -86,12 +86,10 @@ func main() {
 		zipCode := fmt.Sprintf("%05s", record[6])
 		hrrDescription := record[7]
 		totalDischarges := record[8]
-		averageCoveredCharges := record[9]
 		averageTotalPayments := record[10]
-		averageMedicarePayments := record[11]
 
 		if _, found := drgs[drgID]; !found {
-			tx.MustExec(sqlProcedures, totalDischarges, averageTotalPayments, averageCoveredCharges, averageMedicarePayments, drgDefinition)
+			tx.MustExec(sqlProcedures, totalDischarges, drgDefinition)
 			drgs[drgID] = struct{}{}
 		}
 
@@ -116,7 +114,7 @@ func main() {
 			providers[id] = struct{}{}
 		}
 
-		tx.MustExec(sqlProviderProcedure, id, drgID)
+		tx.MustExec(sqlProviderProcedure, id, drgID, averageTotalPayments)
 	}
 	err = tx.Commit()
 	checkErr(err)

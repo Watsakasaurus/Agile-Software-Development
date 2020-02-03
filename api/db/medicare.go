@@ -25,8 +25,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 		select * from ( select
 			p.id as provider_id, p.name as provider_name, p.street as provider_street, 
 			p.city as provider_city, p.state as provider_state, p.zip_code as provider_zip_code,
-			p.hrr_description, pr.average_total_payments, pr.average_covered_charges,
-			pr.average_medicare_payments, pr.drg_definition, pr.drg_definition_tokens,
+			p.hrr_description, pr.drg_definition, pr.drg_definition_tokens, pp.average_total_payments,
 			pr.total_discharges, z.latitude, z.longitude,
 			round(
 				point(z.latitude, z.longitude)<@>point(?,?)
@@ -74,8 +73,7 @@ func (c *Client) GetMedicalDataByDescription(filter MedicalDataFilter, perPage, 
 		Select(`
 		p.id as provider_id, p.name as provider_name, p.street as provider_street, 
 		p.city as provider_city, p.state as provider_state, p.zip_code as provider_zip_code,
-		p.hrr_description, pr.average_total_payments, pr.average_covered_charges,
-		pr.average_medicare_payments, pr.drg_definition, pr.total_discharges,
+		p.hrr_description, pr.drg_definition, pr.total_discharges, pp.average_total_payments,
 		zcll.latitude, zcll.longitude`).
 		From("procedures pr").
 		InnerJoin("provider_procedures pp", "pp.procedure_id=pr.id").
