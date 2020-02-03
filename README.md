@@ -5,6 +5,11 @@ Create an application that can help patients around the US to find the cheapest 
 ## Live version
 http://99.81.88.54/index.html
 
+## Links to videos on YouTube 
+Scrum meeting - https://youtu.be/zfyHyfF23tk
+Pair programming one - https://youtu.be/ZJvZb5cO-xs
+Pair programming two - https://youtu.be/w8D8sQ1oQzE
+
 ## Project Information:
 The project utilises the following technologies.
 * Frontend:
@@ -21,6 +26,7 @@ Currently tracked via trello.
 
 ## DONE
 Currently tracked via trello.
+
 
 
 ## PostgreSQL setup for local dev env:
