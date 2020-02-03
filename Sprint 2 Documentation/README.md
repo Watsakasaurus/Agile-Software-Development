@@ -17,7 +17,12 @@ All members present.
 All members present.
 
 ### Summary of Conversation:
-Had a discussion about how we thought our sprint review went based on the notes we took in the meeting and feedback we recieved. We are planning to put our story points for ratings and admin privileges further down on the priority list and focus on tidying up the website layout, completing the results return with the map, creating more user friendly tools for the price and distance ranges and adding accessibility to our webpages.  
+As a group, we discussed how we thought our sprint review went based on the notes we took in the meeting and feedback we recieved. 
+
+Aylin & Amy - Happy with the feedback on front-end, have added sliders to the search feature and are planning to re-format and then add functionailty for the distance and price ranges to meet the clients requirements better.
+William & Andrius - Working together and have managed to get the map API to work properly with the database and return coordinates properly. They are now trying to implement a summary of each medical centre to attach to the correct points on the map.
+Alek - Researched the WUHCAG guidelines for accessibility, planning to create a list of features whihc need to be implemented for compliance up to level AAA.
+Calum - Submitted missing evidence and tweaked old evidence in sprint documentation so as to complete the evidence set for sprint 1. Planning to create sprint backlog for sprint 2, going to take notes from the sprint review video and work off of the feedback for the next sprint.
 
 ---
 
