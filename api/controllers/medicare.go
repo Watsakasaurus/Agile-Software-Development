@@ -16,8 +16,8 @@ func GetMedicalData(c echo.Context) error {
 	pageNumber := c.Get("page_number").(int)
 
 	filter := db.MedicalDataFilter{
-		PriceMin:  getOptionalInt(c, "max_price"),
-		PriceMax:  getOptionalInt(c, "min_price"),
+		PriceMin:  getOptionalInt(c, "min_price"),
+		PriceMax:  getOptionalInt(c, "max_price"),
 		Proximity: getOptionalInt(c, "proximity"),
 		Query:     getOptionalString(c, "query"),
 		Latitude:  getOptionalFloat64(c, "lat"),

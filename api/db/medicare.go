@@ -29,7 +29,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 			pr.average_medicare_payments, pr.drg_definition, pr.drg_definition_tokens,
 			pr.total_discharges, z.latitude, z.longitude,
 			round(
-				point(z.longitude, z.latitude)<@>point(?,?)
+				point(z.latitude, z.longitude)<@>point(?,?)
 			) * 1609.344 as distance
 		from procedures pr
 		join provider_procedures pp on pp.procedure_id=pr.id
@@ -37,13 +37,14 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 		join zip_code_lat_long z on z.zip_code=p.zip_code
 		order by distance) as res where res.distance<?	
 	`
+
 	args := []interface{}{*filter.Latitude, *filter.Longitude, *filter.Proximity}
 	if filter.PriceMax != nil {
-		query += " and res.average_total_payments >= ?"
+		query += " and res.average_total_payments <= ?"
 		args = append(args, *filter.PriceMax)
 	}
 	if filter.PriceMin != nil {
-		query += " and res.average_total_payments <= ?"
+		query += " and res.average_total_payments >= ?"
 		args = append(args, *filter.PriceMin)
 	}
 	if filter.Query != nil {
