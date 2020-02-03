@@ -30,7 +30,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 			pr.total_discharges, z.latitude, z.longitude,
 			round(
 				point(z.latitude, z.longitude)<@>point(?,?)
-			) * 1609.344 as distance
+			) as distance
 		from procedures pr
 		join provider_procedures pp on pp.procedure_id=pr.id
 		join providers p on p.id=pp.provider_id
@@ -55,7 +55,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 		args = append(args, joined)
 	}
 
-	orderBy := "res.distance ASC, res.average_total_payments ASC"
+	orderBy := "res.distance ASC"
 
 	query = c.ex.Rebind(query)
 	results := []types.MedicalData{}
