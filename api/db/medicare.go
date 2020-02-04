@@ -48,9 +48,10 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 	}
 	if filter.Query != nil {
 		tokens := strings.Split(*filter.Query, " ")
-		joined := strings.Join(tokens, " & ")
+		joined := strings.Join(tokens, "%")
+		joined = "%" + joined + "%"
 
-		query += " and res.drg_definition_tokens @@ ?::tsquery"
+		query += " and res.drg_definition ilike ?"
 		args = append(args, joined)
 	}
 
@@ -120,16 +121,17 @@ func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
 // nolint: unparam
 func applyMedicalDataFilter(query *builder.Builder, filter MedicalDataFilter) *builder.Builder {
 	if filter.PriceMax != nil {
-		query = query.And(builder.Gte{"pp.average_total_payments": *filter.PriceMax})
+		query = query.And(builder.Lte{"pp.average_total_payments": *filter.PriceMax})
 	}
 	if filter.PriceMin != nil {
-		query = query.And(builder.Lte{"pp.average_total_payments": *filter.PriceMin})
+		query = query.And(builder.Gte{"pp.average_total_payments": *filter.PriceMin})
 	}
 	if filter.Query != nil {
 		tokens := strings.Split(*filter.Query, " ")
-		joined := strings.Join(tokens, " & ")
+		joined := strings.Join(tokens, "%")
+		joined = "%" + joined + "%"
 
-		query = query.And(builder.Expr("pr.drg_definition_tokens @@ ?::tsquery", joined))
+		query = query.And(builder.Expr("pr.drg_definition ilike ?", joined))
 	}
 
 	return query
