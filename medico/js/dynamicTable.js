@@ -76,7 +76,7 @@ function renderTable(data) {
             }
         )
     }
-    
+
     // Check if distance is present
     if ("distance" in data.objects[0]) {
         columns.push(
@@ -115,7 +115,7 @@ function renderTable(data) {
             removeAllMarkersFromMap();
             data.map(row => {
                 //let marker = new H.map.Marker({ lat: row.latitude, lng: row.longitude });
-                addDomMarker(row.latitude, row.longitude, row.average_total_payments);
+                addDomMarker(row.latitude, row.longitude, row.average_total_payments, row.provider_name);
                 //map.addObject(marker);
             });
         }
@@ -126,6 +126,7 @@ function renderTable(data) {
         let data = table.row(this).data();
 
         // Center the map when user clicks an entry in the list
-        map.setCenter({lat:data.latitude, lng:data.longitude});
+        map.setCenter({ lat: data.latitude, lng: data.longitude });
+        map.setZoom(14);
     })
 }
