@@ -98,11 +98,14 @@ func (c *Client) GetMedicalDataByDescription(filter MedicalDataFilter, perPage, 
 func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
 	log.Debugf("GetFilteringData")
 
+	/**
+	select to_json(array(select distinct pr.drg_definition from provider_procedures pp join procedures pr on pr.id=pp.procedure_id)) as drg_definitions
+	max(pp.average_total_payments) as max_price, min(pp.average_total_payments) as min_price from provider_procedures pp;
+	**/
 	query := c.Builder().
-		Select(`
-			to_json(array_agg(drg_definition)) as drg_definitions, MIN(CEIL(average_total_payments)) as price_min, 
-			MAX(FLOOR(average_total_payments)) as price_max`).
-		From("procedures")
+		Select(`to_json(array(select distinct pr.drg_definition from provider_procedures pp join procedures pr on pr.id=pp.procedure_id))
+		as drg_definitions, max(pp.average_total_payments) as price_min, min(pp.average_total_payments) as price_max`).
+		From("provider_procedures pp")
 
 	var results types.FilteringData
 	err := c.Get(&results, query)
@@ -117,10 +120,10 @@ func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
 // nolint: unparam
 func applyMedicalDataFilter(query *builder.Builder, filter MedicalDataFilter) *builder.Builder {
 	if filter.PriceMax != nil {
-		query = query.And(builder.Gte{"pr.average_total_payments": *filter.PriceMax})
+		query = query.And(builder.Gte{"pp.average_total_payments": *filter.PriceMax})
 	}
 	if filter.PriceMin != nil {
-		query = query.And(builder.Lte{"pr.average_total_payments": *filter.PriceMin})
+		query = query.And(builder.Lte{"pp.average_total_payments": *filter.PriceMin})
 	}
 	if filter.Query != nil {
 		tokens := strings.Split(*filter.Query, " ")
