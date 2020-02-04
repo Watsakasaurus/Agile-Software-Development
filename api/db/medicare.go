@@ -104,7 +104,7 @@ func (c *Client) GetFilteringData() (*types.FilteringData, *types.Error) {
 	**/
 	query := c.Builder().
 		Select(`to_json(array(select distinct pr.drg_definition from provider_procedures pp join procedures pr on pr.id=pp.procedure_id))
-		as drg_definitions, max(pp.average_total_payments) as price_min, min(pp.average_total_payments) as price_max`).
+		as drg_definitions, max(pp.average_total_payments) as price_max, min(pp.average_total_payments) as price_min`).
 		From("provider_procedures pp")
 
 	var results types.FilteringData
