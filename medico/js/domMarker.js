@@ -1,7 +1,7 @@
 // Add DOM Marker to the map, showing the prices of the procedures.
 
 // Add DOM Marker to the map.
-function addDomMarker(lati, lon, price) {
+function addDomMarker(lati, lon, price, name) {
     var outerElement = document.createElement('div'),
         innerElement = document.createElement('div');
 
@@ -16,13 +16,13 @@ function addDomMarker(lati, lon, price) {
     innerElement.style.color = 'white';
     innerElement.style.backgroundColor = 'black';
     innerElement.style.border = '2px solid black';
-    innerElement.style.font = 'normal 18px arial';
-    innerElement.style.lineHeight = '18px'
-    innerElement.style.borderRadius = '35%';
+    innerElement.style.font = 'normal 12px arial';
+    innerElement.style.lineHeight = '12px'
+    innerElement.style.borderRadius = '15%';
 
     // More Style
     innerElement.style.paddingTop = '8px';
-    innerElement.style.paddingBottom= '8px';
+    innerElement.style.paddingBottom = '8px';
     innerElement.style.paddingLeft = '8px';
     innerElement.style.paddingRight = '8px';
     innerElement.style.width = '100%';
@@ -36,7 +36,7 @@ function addDomMarker(lati, lon, price) {
     outerElement.appendChild(innerElement);
 
     // Add text to the DOM element
-    innerElement.innerHTML = "$" + price;
+    innerElement.innerHTML = name + "<br>$" + price;
 
     // Change opacity on mouseover.
     function changeOpacity(evt) {
