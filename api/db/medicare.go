@@ -25,7 +25,7 @@ func (c *Client) GetMedicalDataByLocation(filter MedicalDataFilter, perPage, pag
 		select * from ( select
 			p.id as provider_id, p.name as provider_name, p.street as provider_street, 
 			p.city as provider_city, p.state as provider_state, p.zip_code as provider_zip_code,
-			p.hrr_description, pr.drg_definition, pr.drg_definition_tokens, pp.average_total_payments,
+			p.hrr_description, pr.drg_definition, pp.average_total_payments,
 			pr.total_discharges, z.latitude, z.longitude,
 			round(
 				point(z.latitude, z.longitude)<@>point(?,?)

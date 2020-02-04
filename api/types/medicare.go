@@ -17,7 +17,6 @@ type MedicalData struct {
 	TotalDischarges      int     `db:"total_discharges" json:"total_discharges"`
 	AverageTotalPayments float64 `db:"average_total_payments" json:"average_total_payments"`
 	DRGDefinition        string  `db:"drg_definition" json:"drg_definition"`
-	DRGDefinitionTokens  string  `db:"drg_definition_tokens" json:"-"`
 	Distance             float64 `db:"distance" json:"distance,omitempty"`
 	Latitude             float64 `db:"latitude" json:"latitude,omitempty"`
 	Longitude            float64 `db:"longitude" json:"longitude,omitempty"`
