@@ -7,7 +7,6 @@ function addMarkerToMap(lati, long) {
     map.addObject(newMarker);
 }
 
-
 // // Add Markers to the map based on lat-lon coordinates. 
 // function addMarkersToMap(map) {
 //     // Get lats and Longs from the API.
@@ -28,7 +27,7 @@ function addMarkerToMap(lati, long) {
 // Initialize communication with Here Maps platform. 
 // API Key declaration.
 var platform = new H.service.Platform({
-    'apikey': 'aZDbxJ8QORSb3lO6-GPbmo0LFETZoSLKo4FRJsp2TUc'
+    'apikey': 'NZC4iABZusQ2Pr6JcnvLLSFn6vr8iytfJzet-EjuFpg'
 });
 var defaultLayers = platform.createDefaultLayers();
 
