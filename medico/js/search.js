@@ -111,9 +111,9 @@ $(document).ready(function() {
         let inputs = $('#search-form :input');
 
         let procedure = inputs[0].value != "" ? inputs[0].value : null;
-        let minPrice = inputs[1].value != "" ? parseInt(inputs[1].value.replace("$", "")) : null;
-        let maxPrice = inputs[2].value != "" ? parseInt(inputs[2].value.replace("$", "")) : null;
-        let proximity = inputs[3].value != "" ? parseInt(inputs[3].value.replace("Miles", "")) : null;
+        let minPrice = inputs[1].value != "" ? parseInt(inputs[1].value) : null;
+        let maxPrice = inputs[2].value != "" ? parseInt(inputs[2].value) : null;
+        let proximity = inputs[3].value != "" ? parseInt(inputs[3].value) : null;
         let zipCode = inputs[4].value
 
         var latLong = {}
