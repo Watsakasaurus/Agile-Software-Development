@@ -7,22 +7,11 @@ function addMarkerToMap(lati, long) {
     map.addObject(newMarker);
 }
 
-// // Add Markers to the map based on lat-lon coordinates. 
-// function addMarkersToMap(map) {
-//     // Get lats and Longs from the API.
-//     getLatLongs(42, -71, 200, 247, 1000000, 1000)
-//         .then((latLongs) => {
-//             console.log("LATLONGS _ _ _ ");
-//             console.log(latLongs);
-//             var lats = latLongs.lats;
-//             var longs = latLongs.longs;
-
-//             for (var i = 0; i < lats.length; i++) {
-//                 var newMarker = new H.map.Marker({ lat: lats[i], lng: longs[i] });
-//                 map.addObject(newMarker);
-//             }
-//         })
-// }
+// Add a marker to the map.
+function addMarkerToMap(lati, long){
+    var newMarker = new H.map.Marker({ lat: lati, lng: long })
+    map.addObject(newMarker);
+}
 
 // Initialize communication with Here Maps platform. 
 // API Key declaration.
