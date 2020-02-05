@@ -62,7 +62,14 @@ $(document).ready(function() {
                 {
                     $("#slider-range").slider("values", $this.data("index"), $this.val());
                 }
-                
+                else if (($this.data("index") == 0 && ($this.val() > $("#amount-bottom").val()))) 
+                {
+                    $("#slider-range").slider("values", $this.data("index"), $("#amount-bottom").val());
+                }
+                else if (($this.data("index") == 1 && ($this.val() < $("#amount-top").val()))) 
+                {
+                    $("#slider-range").slider("values", $this.data("index"), $("#amount-top").val());
+                }
             });
 
             $( "#distance-amount-top" ).on( "keyup", function() {
