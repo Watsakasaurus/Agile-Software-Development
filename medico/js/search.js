@@ -126,17 +126,9 @@ $(document).ready(function () {
         if (zipCode != "") {
             latLong = await zip_code_info(zipCode)
         }
-
-        console.log(procedure, minPrice, maxPrice, proximity, zipCode, latLong)
-
+        
         let data = await get_data(procedure, latLong.lat, latLong.lon, minPrice, maxPrice, proximity)
-
-        // Check if there are any results
-        if (data.total == 0) {
-            alert("No results were found")
-            return
-        }
-
+        
         // Store the results in the local storage
         localStorage.setItem("data", JSON.stringify(data))
 

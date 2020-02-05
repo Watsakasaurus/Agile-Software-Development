@@ -9,13 +9,22 @@ $(document).ready(function () {
     // Get data from browser.
     let data = localStorage.getItem("data")
 
-    // Set data to mock if localstorage is empty
-    if (data == null) {
-        data = mockData
-    }
-
     // Turn json string into object
     data = JSON.parse(data)
+
+    // If there is no data, show 404
+    if (data == null || data.total == 0) {
+        $("#main-content").replaceWith(`
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container justify-content-ceter">
+                    <h1 class="display-4 d-flex justify-content-center">Not Found</h1>
+                    <p class="lead d-flex justify-content-center">Please try again with different search parameters.</p>
+                </div>
+            </div>
+        `)
+        $("#custom-spinner").attr('style', 'display: none !important')
+        return
+    }
 
     let columns = []
     if (data.total > 0) {
