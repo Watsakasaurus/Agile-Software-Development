@@ -7,12 +7,6 @@ function addMarkerToMap(lati, long) {
     map.addObject(newMarker);
 }
 
-// Add a marker to the map.
-function addMarkerToMap(lati, long){
-    var newMarker = new H.map.Marker({ lat: lati, lng: long })
-    map.addObject(newMarker);
-}
-
 // Initialize communication with Here Maps platform. 
 // API Key declaration.
 var platform = new H.service.Platform({
