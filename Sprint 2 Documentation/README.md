@@ -50,10 +50,24 @@ Calum - noted all feedback from first video, changed new sprint and product back
 ## Day 3 - Scrum Meeting summary
 The Scrum Master for this meeting was **Calum Watson**
 
+### Members Present:
+Amy Gourlay, Alek Roebuck, William Mack, Andrius Navasaitis, Aylin Aliev, Calum Watson
 
+### Members Not Present:
+All members present.
+
+### Apologies:
+All members present.
 
 ### Summary of Conversation:
+William - encountered final integration issues with map due to API key not being on the whitelist for access to here maps, problem was overcome and now the final deisgn for the map pointers and details to be shown are going to be changed.
+Calum - gathered all video feedback, now formatting the sprint retrospective with outline help from Amy and going to update the sprint and scrum backlogs.
+Amy - set up project board on GitHub, instead of trello, going to help complete sprint retrospective and do some UI work and tidy up the front end.
+Aylin - removed PHP from contact page, going to restructure it and allow the user to send an email by opening their default email program, going to improve layout of web pages too, UI work.
+Andrius - cached search results to give the user a more meaningful search results page with their search conditions showing and especially in the case of a search result not being found, next steps are to display to the user what their search criteria was so it provides a bettern user experience.
+Alek - implementing accessibility to UI and taking out the things which are non-compliant (most of these things will be sorted with general tidy up of design anyway), going to verify documentation for the day.
 
+A group issue we had was showing our test files alongside the final git version will mean the UI displays incorrectly/with little bugs, so will commit to seperate branch so they can still be included and evidenced.
 
 ---
 
