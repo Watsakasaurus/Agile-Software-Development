@@ -1,3 +1,33 @@
+.input-icon {
+  position: relative;
+}
+
+.input-icon > i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+}
+
+.input-icon > input {
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+.input-icon-right > i {
+  right: 0;
+}
+
+.input-icon-right > input {
+  padding-left: 0;
+  padding-right: 25px;
+  text-align: right;
+}
+
 .my-custom-scrollbar {
   table-layout: fixed;
   position: relative;
@@ -33,6 +63,41 @@
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.searchHeading {
+  padding-top: 5px;
+}
+
+.indexHeading {
+  padding-top: 20px;
+}
+
+.formBorder {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-style: solid;
+}
+
+.h7 {
+  color: #242429;
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+  text-transform: capitalize;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.indexImage {
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  background-image: url(../img/whiteBackground.jpeg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 
@@ -229,12 +294,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 91, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
 p {
-  color: #666666;
+  color: #242429;
   font-family: "Roboto", sans-serif;
   line-height: 1.929;
   font-size: 16px;
   margin-bottom: 0px;
-  color: #888888;
 }
 
 /* line 100, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
@@ -289,7 +353,7 @@ img {
 /* line 134, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
 a:focus, .button:focus, button:focus, .btn:focus {
   text-decoration: none;
-  outline: none;
+  outline: 3px solid red;
   box-shadow: none;
   -webkit-transition: 1s;
   transition: 1s;
@@ -6211,4 +6275,40 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+.slidecontainer {
+  width: 100%;
+
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  cursor: square;
+}
 /*# sourceMappingURL=style.css.map */
