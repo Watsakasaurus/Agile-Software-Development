@@ -65,7 +65,7 @@ $(document).ready(function () {
         columns.push(
             {
                 data: "average_total_payments",
-                title: "Price",
+                title: '<span style="background-color: white;">Price</span>',
             }
         )
 
