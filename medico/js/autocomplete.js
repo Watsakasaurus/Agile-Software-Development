@@ -23,8 +23,8 @@ $(document).ready(function() {
             });
 
             var dsr = $( "#distance-slider-range" ).slider({
-                value: 200,
-                max: 20000,
+                value: 50,
+                max: 10000,
                 step: 10,
                 range: "max",
                 animate: true,
