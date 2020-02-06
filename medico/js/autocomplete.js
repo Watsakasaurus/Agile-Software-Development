@@ -54,10 +54,23 @@ $(document).ready(function() {
                 console.log(this.value);
                 dsr.slider( "value", this.value );
             });
-            
-            $( "#amount-bottom" ).val($( "#slider-range" ).slider( "values", 0 ));
-            $( "#amount-top" ).val($( "#slider-range" ).slider( "values", 1 ));
-            $( "#distance-amount-top" ).val($( "#distance-slider-range" ).slider( "value" ));
+
+            let procedure = localStorage.getItem("procedure")
+            let minPrice = parseInt(localStorage.getItem("minPrice"))
+            let maxPrice = parseInt(localStorage.getItem("maxPrice"))
+            let proximity = parseInt(localStorage.getItem("proximity"))
+            let zipCode = parseInt(localStorage.getItem("zipCode"))
+
+            isNaN(zipCode) == false ? $("#zip-code").val(zipCode) : null
+            procedure != null ? $("#injury-type").val(procedure) : null
+            isNaN(minPrice) == false ? $("#amount-bottom").val(minPrice) : $( "#amount-bottom" ).val($( "#slider-range" ).slider( "values", 0 ));
+            isNaN(maxPrice) == false ? $("#amount-top").val(maxPrice) : $( "#amount-top" ).val($( "#slider-range" ).slider( "values", 1 ));
+            isNaN(proximity) == false ? $("#distance-amount-top").val(proximity) : $( "#distance-amount-top" ).val($( "#distance-slider-range" ).slider( "value" ));
+
+
+            $("#slider-range").slider("values", 0, $("#amount-bottom").val());
+            $("#slider-range").slider("values", 1, $("#amount-top").val());
+            $("#distance-slider-range").slider("value", $("#distance-amount-top").val());
         }
     });
 });
