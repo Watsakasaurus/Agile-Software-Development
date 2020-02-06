@@ -10,6 +10,7 @@ $(document).ready(function() {
 
             $( "#slider-range" ).slider({
                 range: true,
+                step: 250,
                 min: response.price_min,
                 max: response.price_max,
                 values: [ response.price_min, response.price_max ],
@@ -42,6 +43,7 @@ $(document).ready(function() {
             var dsr = $( "#distance-slider-range" ).slider({
                 value: 200,
                 max: 20000,
+                step: 10,
                 range: "max",
                 animate: true,
                 slide: function( event, ui ) {
