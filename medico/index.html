@@ -28,21 +28,21 @@
 
 <body>
     <!--::header part start::-->
-    <header class="menu">
+    <header class="menu"  style="background-color:#1B2D41;">
         <div class="container-fluid" height="10%">
             <div class="row align-items-center">
                 <div class="col-lg-12">
-                    <nav class="navbar navbar-expand navbar-light" style="border-bottom: 1px solid">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="img/rsz_airane.png" width="auto" height="60vh" alt="logo" title="logo">
+                    <nav class="navbar navbar-expand navbar-light" style="border-bottom: 1px solid; color: white;">
+                        <a class="navbar-brand" role="button" href="index.html">
+                            <img src="img/airA&ELogo.jpg" width="auto" height="60vh" alt="logo" title="logo">
                         </a>
                         <div class="justify-content-center" id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item pull-left">
-                                    <a class="nav-link" tabindex="0" role="button" href="index.html">Home</a>
+                                    <a class="nav-link" style="color: white; font-size: 20px;" tabindex="0" role="button" href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" tabindex="0" role="button" href="contact.html">Contact</a>
+                                    <a class="nav-link" style="color: white; font-size: 20px;" tabindex="0" role="button" href="contact.html">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -54,14 +54,16 @@
     <!-- Header part end-->
 
     <!-- banner part start-->
-    <section>
+    <section class="indexImage">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 justify-content-center">
-
-                    <h1 class="searchHeading" align="center">Welcome to AirA&E.</h1>
-                    <h2 align="center">- How can we help you today? -</h2>
-
+                <div class="col-6 justify-content-center">
+                    <div class="textBorder">
+                        <h1 class="searchHeading" style="color: white;" align="center">Welcome to AirA&E.</h1>
+                        <h2 style="color: white;" align="center">- How can we help you today? -</h2>
+                    </div>
+                </div>
+                <div class="col-6 justify-content-center">
                 <form class="formBorder mx-auto" id="search-form" style="max-width: 450px;">
                         <div class="form-group">
                             <div class="d-flex flex-column justify-content-center">
@@ -81,8 +83,8 @@
                         <div class="form-group">
                             <div class="mb-2">
                                 <div class="row">
-                                    <div class="col-12 col-sm-6 pl-0 pr-0">
-                                        <label for="amount-top" class="col-12 col-form-label">Min price</label>
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                        <label for="amount-bottom" class="col-12 col-form-label">Min price</label>
                                         <div class="col-12">
                                             <div class="input-group addon">
                                                 <span class="input-group-prepend">
@@ -90,13 +92,13 @@
                                                         <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
                                                     </div>
                                                 </span>
-                                                <input type="text" class="amount form-control" id="amount-top" data-index="0" name = "min_price"
+                                                <input type="text" class="amount form-control" id="amount-bottom" data-index="0" name = "min_price"
                                                     style="color:#000000; font-weight:bold;">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 pl-0 pr-0">
-                                        <label for="amount-bottom" class="col-12 col-form-label">Max price</label>
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                        <label for="amount-top" class="col-12 col-form-label">Max price</label>
                                         <div class="col-12">
                                             <div class="input-group addon">
                                                 <span class="input-group-prepend">
@@ -104,7 +106,7 @@
                                                         <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
                                                     </div>
                                                 </span>
-                                                <input type="text" class="amount form-control" id="amount-bottom" data-index="1"
+                                                <input type="text" class="amount form-control" id="amount-top" data-index="1"
                                                     style="color:#000000; font-weight:bold;">
                                             </div>
                                         </div>
@@ -116,9 +118,9 @@
                         <div class="form-group">
                             <div class="mb-2">
                                 <div class="row">
-                                    <div class="col-12 pl-0 pr-0">
+                                    <div class="col-sm-12 pl-0 pr-0">
                                         <label for="distance-amount-top" class="col-12 col-form-label">Maximum Distance Range (Miles)</label>
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col-sm-12 col-md-6">
                                             <div class="input-group addon">
                                                 <span class="input-group-prepend">
                                                     <div class="input-group-text bg-transparent border-right-0">
@@ -137,23 +139,23 @@
                         <div class="form-group">
                             <div class="mb-2">
                                 <div class="row">
-                                    <div class="col-12 col-sm-6 pl-0 pr-0">
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
                                         <label for="zip-code" class="col-12 col-form-label">Zip Code</label>
                                         <div class="col-12">
                                             <div class="input-group addon">
                                                 <span class="input-group-prepend">
                                                     <div class="input-group-text bg-transparent border-right-0">
-                                                        <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                        <i class="fas fa-map-marker-alt" style="width: 1em;"></i>
                                                     </div>
                                                 </span>
                                                 <input id="zip-code" class="form-control" name="zip-code" type="number" maxlength=5 placeholder="i.e: 69874" required>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 pl-0 pr-0">
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
                                         <label for="live-location" class="col-12 col-form-label">Live Location</label>
                                         <div class="col-12">
-                                                <button id="live-location" class="form-control buttonColor" type="button" onclick="get_location()">                              
+                                                <button id="live-location" class="form-control" type="button" role="button" onclick="get_location()">                              
                                                     <i class="fas fa-location-arrow"></i>
                                                 </button>
                                         </div>
@@ -162,22 +164,24 @@
                             </div>
                         </div> 
                         <div class="form-row">
-                            <button type="submit" class="btn btn-primary mx-auto">Search</button>
+                            <button type="submit" class="btn mx-auto" style="background-color: #8295A4; color: black;">Search</button>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-7 mx-auto">
-                    <div class="banner_img" align="center">
-                        <h1>Helping you find the best care. Wherever you are.</h1>
-                        <img src="img/map.jpeg" alt="Picture of earth at night" title="Earth at night">
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- banner part start-->
+    <footer>
+        
+            <div class="footer col-lg-12" style="border-top: 1px solid; color: white;">
+            
+                <!-- <a class="navbar-brand" href="index.html">
+                    <img src="img/airA&ELogo.jpg" width="auto" height="60vh" alt="logo" title="logo">
+                </a> -->
+            
+        </div>
+    </footer>
 </body>
 
 </html>
