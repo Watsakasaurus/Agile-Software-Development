@@ -357,7 +357,7 @@ img {
 /* line 134, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
 a:focus, .button:focus, button:focus, .btn:focus {
   text-decoration: none;
-  outline: 3px solid red;
+  outline: 3px solid rgba(100,180,255,0.7);
   box-shadow: none;
   -webkit-transition: 1s;
   transition: 1s;
