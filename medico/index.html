@@ -21,6 +21,7 @@
     <script src="external/jQuery/js/jquery.ajaxchimp.min.js"></script>
     <script src="external/jQuery/js/jquery.nice-select.min.js"></script>
     <script src="js/autocomplete.js"></script>
+    <script src="js/font-awesome.all.min.js"></script>
     <script src="js/custom.js"></script>
     <script src ="js/search.js"></script>
 </head>
@@ -61,34 +62,50 @@
                     <h1 class="searchHeading" align="center">Welcome to AirA&E.</h1>
                     <h2 align="center">- How can we help you today? -</h2>
 
-                <form class="formBorder" id="search-form" ons>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="injuryType">Procedure Description*</label>
-                                <input type="text" class="form-control" id="injury-type" required>
+                <form class="formBorder mx-auto" id="search-form" style="max-width: 450px;">
+                        <div class="form-group">
+                            <div class="d-flex flex-column justify-content-center">
+                                <label for="injuryType" clas="col-12 col-form-label">Procedure Description*</label>
+                                <div class="col-12" style="padding-left:0px;padding-right:0px;">
+                                        <div class="input-group addon">
+                                        <span class="input-group-prepend">
+                                            <div class="input-group-text bg-transparent border-right-0">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                        </span>
+                                        <input type="text" class="form-control" id="injury-type" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="d-flex justify-content-center mb-2">
-                                <legend for="priceRange" class="col-sm-2 col-form-label">Price Range (USD)</legend>
-                                <div class="d-flex justify-content-center">
-                                    <div class="d-flex justify-content-center">
-                                        <label for="amount-top" class="col-3 col-form-label">Minimum:</label>
-                                        <div class="col-4">
-                                            <div class="input-icon">
-                                                <input type="text" class="amount" id="amount-top" data-index="0" name="min_price"
-                                                    style="border:0; color:#000000; font-weight:bold;">
-                                                <i>$</i>
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 pl-0 pr-0">
+                                        <label for="amount-top" class="col-12 col-form-label">Min price</label>
+                                        <div class="col-12">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input type="text" class="amount form-control" id="amount-top" data-index="0" name = "min_price"
+                                                    style="color:#000000; font-weight:bold;">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-center w-50">
-                                        <label for="amount-bottom" class="col-3 col-form-label">Maximum:</label>
-                                        <div class="col-4">
-                                            <div class="input-icon">
-                                                <input type="text" class="amount" id="amount-bottom" data-index="1"
-                                                    style="border:0; color:#000000; font-weight:bold;">
-                                                <i>$</i>
+                                    <div class="col-12 col-sm-6 pl-0 pr-0">
+                                        <label for="amount-bottom" class="col-12 col-form-label">Max price</label>
+                                        <div class="col-12">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input type="text" class="amount form-control" id="amount-bottom" data-index="1"
+                                                    style="color:#000000; font-weight:bold;">
                                             </div>
                                         </div>
                                     </div>
@@ -97,41 +114,61 @@
                             <div id="slider-range"></div>
                         </div>
                         <div class="form-group">
-                            <div class="row">
-                                <legend for="distance-slider-range" class="col-sm-2 col-form-label">Distance Range (Miles)</legend>
-                                <div class="d-flex justify-content-center">
-                                    <div class="p-2 row">
-                                        <label for="distance-amount-top" class="col-3 col-form-label">Maximum:</label>
-                                        <div class="col-9">
-                                            <input type="text" class="form-control" id="distance-amount-top"
-                                            style="border:0; color:#000000; font-weight:bold;">
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-12 pl-0 pr-0">
+                                        <label for="distance-amount-top" class="col-12 col-form-label">Maximum Distance Range (Miles)</label>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-shoe-prints" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input type="text" class="form-control" id="distance-amount-top"
+                                                style="color:#000000; font-weight:bold;">
+                                            </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             <div id="distance-slider-range"></div>
                         </div>
                         <div class="form-group">
-                            <div class="row">
-                                <legend for="zip-code" class="col-2 col-form-label">Zip Code*</legend>
-                                <div class="col-3">
-                                    <input id="zip-code" class="form-control" name="zip-code" type="number" maxlength=5 placeholder="Example: 69874" required>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <label for="live-location" class="col-2 col-form-label">- OR -</label>
-                                        <button id="live-location" class="form-control col-4 buttonColor" type="button" onclick="get_location()">Get Live Location</button>
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 pl-0 pr-0">
+                                        <label for="zip-code" class="col-12 col-form-label">Zip Code</label>
+                                        <div class="col-12">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input id="zip-code" class="form-control" name="zip-code" type="number" maxlength=5 placeholder="i.e: 69874" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 pl-0 pr-0">
+                                        <label for="live-location" class="col-12 col-form-label">Live Location</label>
+                                        <div class="col-12">
+                                                <button id="live-location" class="form-control buttonColor" type="button" onclick="get_location()">                              
+                                                    <i class="fas fa-location-arrow"></i>
+                                                </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div> 
-                        <button type="submit" class="btn btn-primary mb-2">Search</button>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-primary mx-auto">Search</button>
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="row align-items-center">
-                <div class="col-lg-7">
+                <div class="col-lg-7 mx-auto">
                     <div class="banner_img" align="center">
                         <h1>Helping you find the best care. Wherever you are.</h1>
                         <img src="img/map.jpeg" alt="Picture of earth at night" title="Earth at night">

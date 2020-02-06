@@ -9,18 +9,28 @@ $(document).ready(function () {
     // Get data from browser.
     let data = localStorage.getItem("data")
 
-    // Set data to mock if localstorage is empty
-    if (data == null) {
-        data = mockData
-    }
-
     // Turn json string into object
     data = JSON.parse(data)
+
+    // If there is no data, show 404
+    if (data == null || data.total == 0) {
+        $("#main-content").replaceWith(`
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container justify-content-ceter">
+                    <h1 class="display-4 d-flex justify-content-center">Not Found</h1>
+                    <p class="lead d-flex justify-content-center">Please try again with different search parameters.</p>
+                </div>
+            </div>
+        `)
+        $("#custom-spinner").attr('style', 'display: none !important')
+        return
+    }
 
     let columns = []
     if (data.total > 0) {
         columns.push(
             {
+                // Build and populate table.
                 class_name: "full-span-col",
                 data: null,
                 title: "Name",
@@ -94,12 +104,17 @@ $(document).ready(function () {
         "fnDrawCallback": function (oSettings) {
             let table = $("#resultsTable").DataTable()
             let data = table.rows({ page: "current" }).data();
+
+            // Remove all the markers from the list that are already there.
             removeAllMarkersFromMap();
-            data.map(row => {
-                //let marker = new H.map.Marker({ lat: row.latitude, lng: row.longitude });
-                addDomMarker(row.latitude, row.longitude, row.average_total_payments, row.provider_name);
-                //map.addObject(marker);
-            });
+            // Add marker to map to show where user is.
+            addMarkerToMap( localStorage.getItem("lat"), localStorage.getItem("lon")  );
+            // Add new items to the map.
+            data.map(row => {addDomMarker(row.latitude, row.longitude, row.average_total_payments, row.provider_name);});
+
+            // Center map on the location of the first item in the list.
+            map.setCenter({ lat: data[0].latitude, lng: data[0].longitude });
+            map.setZoom(14);
         }
     });
 
