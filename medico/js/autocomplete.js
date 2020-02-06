@@ -13,7 +13,7 @@ $(document).ready(function() {
                 step: 250,
                 min: 0,
                 max: response.price_max,
-                values: [ response.price_min, response.price_max ],
+                values: [ 0, response.price_max ],
                 slide: function( event, ui ) {
                     for (var i=0; i<ui.values.length; i++)
                     {
