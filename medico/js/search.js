@@ -137,6 +137,6 @@ $(document).ready(function () {
         localStorage.setItem("proximity", proximity)
         localStorage.setItem("zipCode", zipCode)
 
-        $(location).attr('href', 'results.html')
+        $(location).attr('href', 'results.html#map')
     });
 })
