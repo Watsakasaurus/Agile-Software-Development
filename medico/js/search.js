@@ -137,6 +137,7 @@ $(document).ready(function () {
         localStorage.setItem("proximity", proximity)
         localStorage.setItem("zipCode", zipCode)
 
-        $(location).attr('href', 'results.html#map')
+        let nonce = Math.random();
+        $(location).attr('href', 'results.html?a=' + nonce + '#map')
     });
 })
