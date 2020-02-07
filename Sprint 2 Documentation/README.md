@@ -96,8 +96,23 @@ Amy - responsive slider functionality based on the searched procedure, going to 
 ## Day 5 - Scrum Meeting summary
 The Scrum Master for this meeting was **Calum Watson**
 
+### Members Present:
+Amy Gourlay, Alek Roebuck, William Mack, Andrius Navasaitis, Aylin Aliev, Calum Watson
 
+### Members Not Present:
+All members present.
+
+### Apologies:
+All members present.
 
 ### Summary of Conversation:
+Aylin - removed redundancies of CSS, freeing up space, contact page to be finished off with Amy, styling done just needs tidied up.
+Andrius - added search panel to results page, to finish TDD roadmap and test report.
+Calum - organised final documents, some to be finished by other group memebers before final submission, now prepping to lead the sprint review and organise a "script" alongside Alek for the review.
+William - code reviewed the merge requests and tried to tidy up GitHub, going to add a nonce for page reloads on changed result parameters.
+Amy - redesigned the UI slightly and then going to finish off the retrospective report.
+Alek - met all WUHCAG guidelines and now going to write up "script" for the sprint review meeting.
+
+
 
 ---
