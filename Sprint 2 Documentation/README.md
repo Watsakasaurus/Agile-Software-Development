@@ -74,10 +74,22 @@ A group issue we had was showing our test files alongside the final git version 
 ## Day 4 - Scrum Meeting summary
 The Scrum Master for this meeting was **Calum Watson**
 
+### Members Present:
+Amy Gourlay, Alek Roebuck, William Mack, Andrius Navasaitis, Aylin Aliev, Calum Watson
 
+### Members Not Present:
+All members present.
+
+### Apologies:
+All members present.
 
 ### Summary of Conversation:
-
+Andrius - changed search form so it is fully responsive, final tests implemented on back-end, still to implement form onto master and hopefully onto the results page also.
+William - zooms in on a result on the map, when selected from the list, going to implement it showing the location of the user or location entered, also to comment API and bug check.
+Calum - updating daily documents, finished sprint retrospective now to gather last few documents together from rest of group and record video of TDD.
+Alek - verified documentation, going to finish off implementing the WUHCAG properties and meet accessibility guidelines.
+Aylin - attempted to clear up front end and increase the usability of the contacts page, tidy up CSS and condense files.
+Amy - responsive slider functionality based on the searched procedure, going to tidy up github streams and help with final styling choices. 
 
 ---
 
