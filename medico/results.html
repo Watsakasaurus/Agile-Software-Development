@@ -6,10 +6,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <title>medical</title>
+    <title>Air A&E | Search Results</title>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="external/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!---->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/dist/jquery-ui-slider-pips.css">
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="external/dataTables/datatables.min.css" />
     <!-- animate CSS -->
@@ -20,8 +23,6 @@
     <link rel="stylesheet" href="external/themify/css/themify-icons.css">
     <!-- flaticon CSS -->
     <link rel="stylesheet" href="css/flaticon.css">
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="external/font-awsome/css/all.min.css" <!-- magnific popup CSS -->
     <link rel="stylesheet" href="css/magnific-popup.css">
     <!-- nice select CSS -->
     <link rel="stylesheet" href="css/nice-select.css">
@@ -29,19 +30,23 @@
     <link rel="stylesheet" href="css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- JQuery Library via CDN -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- Here Maps JavaScript API-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/src/js/jquery-ui-slider-pips.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.js"></script>
+    <!-- Here Maps JavaScript API via CDN -->
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
-    <!-- getRequest.js for Lat Longs for Map -->
+    <script type="text/javascript" src="js/font-awesome.all.min.js"></script>
     <script type="text/javascript" src='js/getRequest.js'></script>
     <script type="text/javascript" src='js/domMarker.js'></script>
-
-
+    <script type="text/javascript" src='js/search.js'></script>
 </head>
 
 <style>
@@ -71,42 +76,134 @@
     .tooltip:hover .tooltiptext {
         visibility: visible;
     }
+
+    table.dataTable thead tr th {
+        background-color: white !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_length label {
+        color: white;
+    }
 </style>
 
 
-<body>
-    <!--::header part start::-->
-    <header class="menu">
-        <div class="container-fluid" height="10%">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand navbar-light" style="border-bottom: 1px solid">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="img/rsz_airane.png" width="auto" height="60vh" alt="logo">
-                        </a>
-                        <div class="justify-content-center" id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item pull-left">
-                                    <a class="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
+<body style="background-color: #1B2D41">
+    <!-- ================ contact section start ================= -->
+    <section class="h-100" style="background-color:#1B2D41;">
+        <header class="menu" style="background-color:#1B2D41;">
+            <div class="container-fluid" height="10%">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand navbar-light" style="border-bottom: 1px solid; color: white;">
+                            <a class="navbar-brand" href="index.html">
+                                <img src="img/airA&ELogo.jpg" width="auto" height="60vh" alt="logo">
+                            </a>
+                            <div class="justify-content-center" id="navbarSupportedContent">
+                                <ul class="navbar-nav align-items-center">
+                                    <li class="nav-item pull-left">
+                                        <a class="nav-link" tabindex="0" style="color: white; font-size: 20px;" href="index.html">Home</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <!-- Header part end-->
-    <!-- ================ contact section start ================= -->
-    <section class="section_padding">
+        </header>
         <div class="container-fluid">
-            <!-- <div id="custom-spinner" class="d-flex justify-content-center" role="status">
-
-            <span class="sr-only">Loading...</span>
-        </div> -->
+            <form class="formBorder mx-auto mb-4" style="max-width: 800px;" id="search-form">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <label for="injuryType" clas="col-12 col-form-label">Procedure Description*</label>
+                            <div class="col-12" style="padding-left:0px;padding-right:0px;">
+                                    <div class="input-group addon">
+                                    <span class="input-group-prepend">
+                                        <div class="input-group-text bg-transparent border-right-0">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                    </span>
+                                    <input type="text" class="form-control" id="injury-type" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 pl-0 pr-0">
+                                    <label for="amount-bottom" class="col-12 col-form-label">Min price</label>
+                                    <div class="col-12">
+                                        <div class="input-group addon">
+                                            <span class="input-group-prepend">
+                                                <div class="input-group-text bg-transparent border-right-0">
+                                                    <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                </div>
+                                            </span>
+                                            <input type="text" class="amount form-control" id="amount-bottom" data-index="0" name = "min_price"
+                                                style="color:#000000; font-weight:bold;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pl-0 pr-0 mb-2">
+                                    <label for="amount-top" class="col-12 col-form-label">Max price</label>
+                                    <div class="col-12">
+                                        <div class="input-group addon">
+                                            <span class="input-group-prepend">
+                                                <div class="input-group-text bg-transparent border-right-0">
+                                                    <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                </div>
+                                            </span>
+                                            <input type="text" class="amount form-control" id="amount-top" data-index="1"
+                                                style="color:#000000; font-weight:bold;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-11 mx-auto" id="slider-range"></div>
+                            </div>
+                        </div> 
+                        <div class="col-12 col-md-6">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                    <label for="zip-code" class="col-12 col-form-label">Zip Code</label>
+                                    <div class="col-12">
+                                        <div class="input-group addon">
+                                            <span class="input-group-prepend">
+                                                <div class="input-group-text bg-transparent border-right-0">
+                                                    <i class="fas fa-map-marker-alt" style="width: 1em;"></i>
+                                                </div>
+                                            </span>
+                                            <input id="zip-code" class="form-control" name="zip-code" type="number" maxlength=5 placeholder="i.e: 69874" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                    <label for="live-location" class="col-12 col-form-label">Live Location</label>
+                                    <div class="col-12">
+                                        <button id="live-location" class="form-control" type="button" role="button" onclick="get_location()">                              
+                                            <i class="fas fa-location-arrow"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 pl-0 pr-0">
+                                    <label for="distance-amount-top" class="col-12 col-form-label">Maximum Distance Range (Miles)</label>
+                                    <div class="col-12">
+                                        <div class="input-group addon">
+                                            <span class="input-group-prepend">
+                                                <div class="input-group-text bg-transparent border-right-0">
+                                                    <i class="fas fa-shoe-prints" style="width: 1em;"></i>
+                                                </div>
+                                            </span>
+                                            <input type="text" class="form-control" id="distance-amount-top"
+                                            style="color:#000000; font-weight:bold;">
+                                        </div>
+                                    </div>
+                                <div class="col-11 mx-auto mt-2" id="distance-slider-range"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="btn mx-auto" style="background-color: #8295A4; color: black;">Search</button>
+                </div>
+            </form>
             <div id="custom-spinner" class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
                     <span class="sr-only">Loading...</span>
@@ -114,7 +211,7 @@
             </div>
             <div id="main-content" class="row" style="visibility: hidden;">
                 <div class="col-sm-7 col-xl-9 col-md-8">
-                    <div id="map" style="height: 600px;"></div>
+                    <div id="map" style="height: 640px;"></div>
                     <script type="text/javascript" src="js/mapMarker.js"></script>
 
                 </div>
@@ -128,8 +225,8 @@
         </div>
 
         <!-- jquery plugins here-->
-        <script src="external/jQuery/js/jquery-1.12.1.min.js"></script>
         <script src="external/dataTables/jquery.dataTables.min.js"></script>
+        <script src="http://cdn.datatables.net/plug-ins/1.10.20/features/scrollResize/dataTables.scrollResize.min.js"></script>
         <!-- popper js -->
         <script src="external/popper/js/popper.min.js"></script>
         <!-- bootstrap js -->
@@ -148,7 +245,8 @@
         <script src="js/contact.js"></script>
         <!-- custom js -->
         <script src="js/custom.js"></script>
+        <script type="text/javascript" src='js/autocomplete.js'></script>
         <script src="js/dynamicTable.js"></script>
-</body>
+</body >
 
 </html>

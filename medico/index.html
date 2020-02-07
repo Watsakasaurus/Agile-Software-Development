@@ -5,147 +5,180 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>medical</title>
-    <link rel="icon" href="img/favicon.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="external/bootstrap/css/bootstrap.min.css">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="external/owl/css/owl.carousel.min.css">
-    <!-- themify CSS -->
-    <link rel="stylesheet" href="external/owl/css/themify-icons.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <!-- magnific popup CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href="css/nice-select.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
-    <!-- style CSS -->
+    <title>Air A&E | Home</title>
+    <!-- <link rel="icon" href="img/favicon.png"> -->
     <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/dist/jquery-ui-slider-pips.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/src/js/jquery-ui-slider-pips.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="external/jQuery/js/jquery.ajaxchimp.min.js"></script>
+    <script src="external/jQuery/js/jquery.nice-select.min.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script src="js/font-awesome.all.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src ="js/search.js"></script>
 </head>
 
 <body>
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="img/rsz_airane.png" alt="logo"> </a>
-                        <div class="main-menu-item justify-content-center"
-                            id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header part end-->
 
     <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-1 col-xl-5">
-                    <div class="banner_text">
-                        <div class="banner_text_iner">
-                            <h2>Enter Your Details:</h2>
-                            <form name="myForm" action="file:///C:/Users/amygo/Documents/GitHub/Agile-Software-Development/medico/results.html">
-                                <p>Type of injury*<br><input style="width: 50%" Injury code type="text" id="injuryType" required></p>
-                                <p> Price Range Max<br><input style="width: 50%" type="number" name="points" min="0" max="20000"placeholder=$20000></p>
-                                <p>Distance Range<br><input style="width: 50%"   type="number" name="points" min="0" max="3000"placeholder=250></p>       
-                                <p>Zip code*<br><input style="width: 40%" name="Zip Code" type="text" placeholder="Example: 69874" required>
-                                    -OR-
-                                    <a>
-                                        <button type="button" id = "curr_location" onclick="get_location()">Live Location</button>
-                                            
-                                            <script type="text/javascript">
-                                                
-                                                var curr_location = document.getElementById('curr_location');
-                                                function get_location(){
-                                    
-                                                        if(navigator.geolocation){
-                                                        navigator.geolocation.getCurrentPosition(position => {
-                                                            console.log(position.coords);
-                                                        });
-                                                        } else {
-                                                            console.log("Error occured");
-                                                            console.log("Hi there")
-                                                    }
-                                            
-                                                    
-                                        }
-                                            </script> 
-                                            
-                                    </a>
-                                <p>*Required</p>
-
-                                <p><button type="submit" name="Submit"><i>Search</i></button></p>
-
-                                <!--<p><br><a href="results.html" class="genric-btn info radius" id="search_button" onclick="validation()">Search</a></p>-->
-                                
-                            </form>
-                        </div>
+    <section class="indexImage h-100">
+        <!--::header part start::-->
+        <header class="menu"  style="background-color:#1B2D41;">
+            <div class="container-fluid" height="10%">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand navbar-light" style="border-bottom: 1px solid; color: white;">
+                            <a class="navbar-brand" role="button" href="index.html">
+                                <img src="img/airA&ELogo.jpg" width="auto" height="60vh" alt="logo" title="logo">
+                            </a>
+                            <div class="justify-content-center" id="navbarSupportedContent">
+                                <ul class="navbar-nav align-items-center">
+                                    <li class="nav-item pull-left">
+                                        <a class="nav-link" style="color: white; font-size: 20px;" tabindex="0" role="button" href="index.html">Home</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="banner_img" align="center">
-                        <h1>Helping you find the best care. Wherever you are.</h1>
-                        <img src="img/map.jpeg" alt="">
+            </div>
+        </header>
+        <!-- Header part end-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6 my-auto h-100 justify-content-center">
+                    <div class="textBorder">
+                        <h1 class="searchHeading" style="color: white;" align="center">Welcome to AirA&E.</h1>
+                        <h2 style="color: white;" align="center">- How can we help you today? -</h2>
                     </div>
+                </div>
+                <div class="col-12 col-sm-6 my-auto h-100 justify-content-center">
+                    <form class="formBorder mx-auto" id="search-form" style="max-width: 450px;">
+                        <div class="form-group">
+                            <div class="d-flex flex-column justify-content-center">
+                                <label for="injuryType" clas="col-12 col-form-label">Procedure Description*</label>
+                                <div class="col-12" style="padding-left:0px;padding-right:0px;">
+                                        <div class="input-group addon">
+                                        <span class="input-group-prepend">
+                                            <div class="input-group-text bg-transparent border-right-0">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                        </span>
+                                        <input type="text" class="form-control" id="injury-type" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                        <label for="amount-bottom" class="col-12 col-form-label">Min price</label>
+                                        <div class="col-12">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input type="text" class="amount form-control" id="amount-bottom" data-index="0" name = "min_price"
+                                                    style="color:#000000; font-weight:bold;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                        <label for="amount-top" class="col-12 col-form-label">Max price</label>
+                                        <div class="col-12">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-dollar-sign icon" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input type="text" class="amount form-control" id="amount-top" data-index="1"
+                                                    style="color:#000000; font-weight:bold;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="slider-range"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-sm-12 pl-0 pr-0">
+                                        <label for="distance-amount-top" class="col-12 col-form-label">Maximum Distance Range (Miles)</label>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-shoe-prints" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input type="text" class="form-control" id="distance-amount-top"
+                                                style="color:#000000; font-weight:bold;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="distance-slider-range"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                        <label for="zip-code" class="col-12 col-form-label">Zip Code</label>
+                                        <div class="col-12">
+                                            <div class="input-group addon">
+                                                <span class="input-group-prepend">
+                                                    <div class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fas fa-map-marker-alt" style="width: 1em;"></i>
+                                                    </div>
+                                                </span>
+                                                <input id="zip-code" class="form-control" name="zip-code" type="number" maxlength=5 placeholder="i.e: 69874" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 pl-0 pr-0">
+                                        <label for="live-location" class="col-12 col-form-label">Live Location</label>
+                                        <div class="col-12">
+                                                <button id="live-location" class="form-control" type="button" role="button" onclick="get_location()">                              
+                                                    <i class="fas fa-location-arrow"></i>
+                                                </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-row">
+                            <button type="submit" class="btn mx-auto" style="background-color: #8295A4; color: black;">Search</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
     <!-- banner part start-->
-
-    <!-- jquery plugins here-->
-    
-    <!-- Validation
-    <script>
-    function validation() {
-        if (document.getElementById("injuryType").value != "") {} else {
-            alert("Please enter a value");
-        }
-    }
-
-    function validation() {
-    var x = document.getElementById("injuryType").value;
-    if (x == "") 
-    text = "This is a required field";
-
-    document.getElementById("injuryType").innerHTML = text;
-}
-
-    </script>-->
-
-    <script src="external/jQuery/js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="external/popper/js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="external/bootstrap/js/bootstrap.min.js"></script>
-    <!-- owl carousel js -->
-    <script src="external/owl/js/owl.carousel.min.js"></script>
-    <script src="external/jQuery/js/jquery.nice-select.min.js"></script>
-    <!-- contact js -->
-    <script src="external/jQuery/js/jquery.ajaxchimp.min.js"></script>
-    <script src="external/jQuery/js/jquery.form.js"></script>
-    <script src="external/jQuery/js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="js/contact.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
+    <footer>
+        
+            <div class="footer col-lg-12" style="border-top: 1px solid; color: white;">
+            
+                <!-- <a class="navbar-brand" href="index.html">
+                    <img src="img/airA&ELogo.jpg" width="auto" height="60vh" alt="logo" title="logo">
+                </a> -->
+            
+        </div>
+    </footer>
 </body>
 
 </html>

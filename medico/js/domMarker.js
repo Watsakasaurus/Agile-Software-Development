@@ -13,8 +13,8 @@ function addDomMarker(lati, lon, price, name) {
     outerElement.style.cursor = 'default';
 
     // More Style
-    innerElement.style.color = 'white';
-    innerElement.style.backgroundColor = 'black';
+    innerElement.style.color = 'black';
+    innerElement.style.backgroundColor = 'white';
     innerElement.style.border = '2px solid black';
     innerElement.style.font = 'normal 12px arial';
     innerElement.style.lineHeight = '12px'
@@ -26,6 +26,7 @@ function addDomMarker(lati, lon, price, name) {
     innerElement.style.paddingLeft = '8px';
     innerElement.style.paddingRight = '8px';
     innerElement.style.width = '100%';
+    innerElement.style.maxWidth = '180px';
     innerElement.style.height = '100%';
 
     // Negative Margin for the purpose of centering the text.
@@ -36,7 +37,7 @@ function addDomMarker(lati, lon, price, name) {
     outerElement.appendChild(innerElement);
 
     // Add text to the DOM element
-    innerElement.innerHTML = name + "<br>$" + price;
+    innerElement.innerHTML = name + "<br><b>$" + price + "</b>";
 
     // Change opacity on mouseover.
     function changeOpacity(evt) {
@@ -66,5 +67,7 @@ function addDomMarker(lati, lon, price, name) {
     var DOM_Marker = new H.map.DomMarker({ lat: lati, lng: lon }, {
         icon: domIcon
     });
+
+    // Add the marker to the map.
     map.addObject(DOM_Marker);
 }
