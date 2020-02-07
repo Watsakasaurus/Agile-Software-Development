@@ -112,13 +112,13 @@ $(document).ready(function () {
     $("#search-form").on('submit', async function (e) {
         e.preventDefault();
 
-        let inputs = $('#search-form :input');
 
-        let procedure = inputs[0].value != "" ? inputs[0].value : null;
-        let minPrice = inputs[1].value != "" ? parseInt(inputs[1].value) : null;
-        let maxPrice = inputs[2].value != "" ? parseInt(inputs[2].value) : null;
-        let proximity = inputs[3].value != "" ? parseInt(inputs[3].value) : null;
-        let zipCode = inputs[4].value
+        console.log($("#amount-top").val())
+        let procedure = $("#injury-type").val() != "" ? $("#injury-type").val() : null;
+        let minPrice = $("#amount-bottom").val() != "" ? parseInt($("#amount-bottom").val()) : null;
+        let maxPrice = $("#amount-top").val() != "" ? parseInt($("#amount-top").val()) : null;
+        let proximity = $("#distance-amount-top").val() != "" ? parseInt($("#distance-amount-top").val()) : null;
+        let zipCode = $("#zip-code").val()
 
         var latLong = {}
 
@@ -131,7 +131,12 @@ $(document).ready(function () {
         
         // Store the results in the local storage
         localStorage.setItem("data", JSON.stringify(data))
+        localStorage.setItem("procedure", procedure)
+        localStorage.setItem("minPrice", minPrice)
+        localStorage.setItem("maxPrice", maxPrice)
+        localStorage.setItem("proximity", proximity)
+        localStorage.setItem("zipCode", zipCode)
 
-        $(location).attr('href', 'results.html')
+        $(location).attr('href', 'results.html#map')
     });
 })

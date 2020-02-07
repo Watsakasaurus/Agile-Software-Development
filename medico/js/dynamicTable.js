@@ -6,6 +6,19 @@ $.extend(true, $.fn.dataTable.defaults, {
 // Init table on document load
 $(document).ready(function () {
 
+    // Load all of the search params into the form
+    let procedure = localStorage.getItem("procedure")
+    let minPrice = parseInt(localStorage.getItem("minPrice"))
+    let maxPrice = parseInt(localStorage.getItem("maxPrice"))
+    let proximity = parseInt(localStorage.getItem("proximity"))
+    let zipCode = parseInt(localStorage.getItem("zipCode"))
+
+    $("#injury-type").val(procedure)
+    $("#amount-bottom").val(minPrice)
+    $("#amount-top").val(maxPrice)
+    $("#zip-code").val(zipCode)
+    $("#distance-amount-top").val(proximity)
+
     // Get data from browser.
     let data = localStorage.getItem("data")
 
@@ -42,17 +55,17 @@ $(document).ready(function () {
                                 <h6 class="card-subtitle mb-2 text-muted">${row.hrr_description}</h6>
                                 <div class="row">
                                     <div class="col">
-                                        <i class="fas fa-road"></i> Street - ${row.provider_street}</i>
+                                        <i class="fas fa-road"></i> Street - ${row.provider_street}
                                     </div>
                                     <div class="col">
-                                        <i class="fas fa-city"></i> City - ${row.provider_city}</i>
+                                        <i class="fas fa-city"></i> City - ${row.provider_city}
                                     </div>
                                     <div class="w-100"></div>
                                     <div class="col">
-                                        <i class="fas fa-location-arrow"></i> Zip Code - ${row.provider_zip_code}</i>
+                                        <i class="fas fa-location-arrow"></i> Zip Code - ${row.provider_zip_code}
                                     </div>
                                     <div class="col">
-                                        <i class="fas fa-dollar-sign"> Price - $${row.average_total_payments}</i>
+                                        <i class="fas fa-dollar-sign"></i> Price - $${row.average_total_payments}
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +74,6 @@ $(document).ready(function () {
                 }
             }
         )
-
         columns.push(
             {
                 data: "average_total_payments",
@@ -80,7 +92,8 @@ $(document).ready(function () {
         }
     }
     $('#resultsTable').DataTable({
-        "scrollY": "80vh",
+        scrollResize: true,
+        "scrollY": "100",
         "scrollCollaps": true,
         info: false,
         select: true,
